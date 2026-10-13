@@ -1,0 +1,32 @@
+//Makefile
+
+
+
+CC = gcc
+
+CFLAGS = -Wall -Wextra -g
+
+TARGET = dataBase
+
+SRC = main.c \
+      add_record.c \
+      print_record.c \
+      find_record.c \
+      delete_record.c \
+      edit_record.c \
+      reverse_record.c \
+      save_record.c
+
+OBJ = $(SRC:.c=.o)
+
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+
+
+%.o: %.c student.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
+clean:
+	rm -f $(OBJ) $(TARGET)
